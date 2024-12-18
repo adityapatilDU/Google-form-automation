@@ -1,0 +1,65 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+import time
+
+driver_path = r"C:\\Users\\Downloads\\chromedriver-win64\\chromedriver.exe"
+
+driver = webdriver.Chrome(executable_path=driver_path)
+
+# Open the URL
+url = "https://forms.gle/WT68aV5UnPajeoSc8"
+driver.get(url)
+
+time.sleep(3)
+
+try:
+    name = driver.find_element(By.CLASS_NAME, "whsOnd.zHQkBf")
+    name.send_keys("Aditya Ravindra Patil")
+
+    name.send_keys(Keys.TAB)
+    time.sleep(1)
+
+    contact = driver.switch_to.active_element
+    contact.send_keys("9156161460")
+
+    contact.send_keys(Keys.TAB)
+    time.sleep(1)
+
+    email = driver.switch_to.active_element
+    email.send_keys("adityapatil12102003@gmail.com")
+
+    email.send_keys(Keys.TAB)
+    time.sleep(1)
+
+    address = driver.switch_to.active_element
+    address.send_keys("At post morgaon khurd, taluka raver district jalgaon, maharashtra.")
+
+    address.send_keys(Keys.TAB)
+    time.sleep(1)
+
+    Pin = driver.switch_to.active_element
+    Pin.send_keys("425508")
+
+    Pin.send_keys(Keys.TAB)
+    time.sleep(1)
+
+    date_input = driver.find_element(By.XPATH,'//*[@id="mG61Hd"]/div[2]/div/div[2]/div[6]/div/div/div[2]/div/div/div[2]/div[1]/div/div[1]/input')
+    date_input.send_keys('2024-12-18')
+
+    gender = driver.find_element(By.XPATH,'//*[@id="mG61Hd"]/div[2]/div/div[2]/div[7]/div/div/div[2]/div/div[1]/div/div[1]/input')
+    gender.send_keys('Male')
+
+    code = driver.find_element(By.XPATH,'//*[@id="mG61Hd"]/div[2]/div/div[2]/div[8]/div/div/div[2]/div/div[1]/div/div[1]/input')
+    code.send_keys('GNFPYC')
+
+    submit_button = driver.find_element(By.CLASS_NAME, "uArJ5e.UQuaGc.Y5sE8d.VkkpIf.QvWxOd")
+    submit_button.click()
+
+    input("Form submitted!")
+
+except Exception as e:
+    print(f"An error occurred: {e}")
+
+# Close the browser
+driver.quit()
